@@ -4,25 +4,11 @@ const {
   postMood,
   getMoods,
   getMood,
+  deleteMood,
+  updateMood,
 } = require("../controllers/moodController");
 
-// GET all moods
-router.get("/", getMoods);
-
-// GET a single mood
-router.get("/:id", getMood);
-
-// POST a new mood
-router.post("/", postMood);
-
-// DELETE a mood
-router.delete("/:id", (req, res) => {
-  res.json({ msg: `Delete a mood with an id of ${req.params.id}` });
-});
-
-// UPDATE a new mood
-router.put("/:id", (req, res) => {
-  res.json({ msg: "Update a mood" });
-});
+router.route("/").get(getMoods).post(postMood);
+router.route("/:id").put(updateMood).delete(deleteMood).get(getMood);
 
 module.exports = router;

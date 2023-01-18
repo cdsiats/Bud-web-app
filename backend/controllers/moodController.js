@@ -44,11 +44,45 @@ const postMood = async (req, res) => {
 };
 
 //@desc UPDATE single mood
+const updateMood = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Mood log does not exist" });
+  }
+
+  const mood = await Mood.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
+
+  if (!mood) {
+    return res.status(404), json({ error: "Mood log does not exist" });
+  }
+
+  res.status(200).json(mood);
+};
 
 //@desc DELETE single mood
+const deleteMood = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Mood log does not exist" });
+  }
+
+  const mood = await Mood.findOneAndDelete({ _id: id });
+
+  if (!mood) {
+    return res.status(404).json({ error: "Mood log does not exist" });
+  }
+
+  res.status(200).json(mood);
+};
 
 module.exports = {
   postMood,
   getMoods,
   getMood,
+  deleteMood,
+  updateMood,
 };
