@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // components
 import MoodDetails from "../components/MoodDetails";
+import MoodForm from "../components/MoodForm";
 
 const Home = () => {
   const [moods, setMoods] = useState(null);
@@ -21,12 +22,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gray-300 py-5">
-      <div className="container mx-auto">
-        {moods &&
-          moods.map((mood) => (
-            <MoodDetails key={mood._id} mood={mood}></MoodDetails>
-          ))}
+    <div className="bg-gray-300 h-screen">
+      <div className="container mx-auto flex justify-between">
+        <div className="grow mr-10 h-[600px] overflow-scroll mt-5">
+          {moods &&
+            moods.map((mood) => (
+              <MoodDetails key={mood._id} mood={mood}></MoodDetails>
+            ))}
+        </div>
+        <div className="pt-5">
+          <MoodForm></MoodForm>
+        </div>
       </div>
     </div>
   );

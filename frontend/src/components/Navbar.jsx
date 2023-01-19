@@ -6,8 +6,10 @@ const Navbar = () => {
     <>
       <header className="py-5">
         <div className="container mx-auto flex justify-between">
-          <Link className="text-4xl font-bold" to="/">
-            <h1>Bud</h1>
+          <Link to="/">
+            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">
+              Bud
+            </h1>
           </Link>
         </div>
       </header>

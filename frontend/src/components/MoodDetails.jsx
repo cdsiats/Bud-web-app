@@ -2,10 +2,12 @@ import React from "react";
 
 const MoodDetails = ({ mood }) => {
   return (
-    <div className="bg-white my-5 p-3 rounded-lg shadow-md max-w-2xl">
-      <h4 className="pb-3 text-lg">{mood.title}</h4>
+    <div className="bg-white mb-3 p-3 rounded-lg shadow-md max-w-none">
+      <h4 className="mb-3 text-lg text-teal-600 font-extrabold">
+        {mood.title}
+      </h4>
       <p>
-        <strong className="text-gray-700">Description : </strong>
+        <strong>Description : </strong>
         {mood.description}
       </p>
       <p>
