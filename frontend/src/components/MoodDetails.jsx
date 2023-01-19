@@ -2,14 +2,10 @@ import React from "react";
 
 const MoodDetails = ({ mood }) => {
   return (
-    <div className="bg-white mb-5 p-3 rounded-lg">
-      {mood.mood === "Happy" ? <div>Hello</div> : null}
-      <h4>
-        <strong>Log Title : </strong>
-        {mood.title}
-      </h4>
+    <div className="bg-white my-5 p-3 rounded-lg shadow-md max-w-2xl">
+      <h4 className="pb-3 text-lg">{mood.title}</h4>
       <p>
-        <strong>Description : </strong>
+        <strong className="text-gray-700">Description : </strong>
         {mood.description}
       </p>
       <p>
@@ -20,7 +16,9 @@ const MoodDetails = ({ mood }) => {
         <strong>Mood Intensity : </strong>
         {mood.moodIntensity}
       </p>
-      <p>{mood.createdAt}</p>
+      <p className="mt-2">
+        <small>{mood.createdAt}</small>
+      </p>
     </div>
   );
 };

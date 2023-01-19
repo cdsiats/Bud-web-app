@@ -21,8 +21,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gray-300 h-screen">
-      <div className="container mx-auto pt-5">
+    <div className="bg-gray-300 py-5">
+      <div className="container mx-auto">
         {moods &&
           moods.map((mood) => (
             <MoodDetails key={mood._id} mood={mood}></MoodDetails>
