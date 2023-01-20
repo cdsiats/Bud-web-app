@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useMoodsContext } from "../hooks/useMoodsContext";
 
 const MoodForm = () => {
+  const { dispatch } = useMoodsContext();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [mood, setMood] = useState("");
   const [moodIntensity, setMoodIntensity] = useState(1);
   const [error, setError] = useState("");
-  const [isErrorVisible, setIsErrorVisble] = useState(false);
+  const [emptyFields, setEmptyFields] = useState([]);
+  const [isErrorVisible, setIsErrorVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,10 +29,11 @@ const MoodForm = () => {
 
     if (!res.ok) {
       setError(json.error);
-      setIsErrorVisble(true);
+      setEmptyFields(json.emptyFields);
+      setIsErrorVisible(true);
 
       setTimeout(() => {
-        setIsErrorVisble(false);
+        setIsErrorVisible(false);
       }, 3000);
     }
     if (res.ok) {
@@ -37,7 +42,9 @@ const MoodForm = () => {
       setMood("");
       setMoodIntensity(1);
       setError(null);
+      setEmptyFields([]);
       console.log("New Log Added");
+      dispatch({ type: "CREATE_MOOD", payload: json });
     }
   };
 
@@ -48,7 +55,9 @@ const MoodForm = () => {
         <label>Log Title</label>
         <input
           placeholder="Mood Log"
-          className="rounded h-8 mb-3 p-2"
+          className={`rounded h-8 mb-3 p-2 ${
+            emptyFields.includes("title") ? "border border-red-400" : ""
+          }`}
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
@@ -57,7 +66,9 @@ const MoodForm = () => {
         <label>Description</label>
         <input
           placeholder="Tell me what happened"
-          className="rounded h-8 mb-3 p-2 border-teal-600"
+          className={`rounded h-8 mb-3 p-2 border-teal-600 ${
+            emptyFields.includes("description") ? "border border-red-400" : ""
+          }`}
           type="text"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
@@ -66,7 +77,9 @@ const MoodForm = () => {
         <label>How did you feel?</label>
         <input
           placeholder="Happy? Anxious? Angry?"
-          className="rounded h-8 mb-3 p-2"
+          className={`rounded h-8 mb-3 p-2 ${
+            emptyFields.includes("mood") ? "border border-red-400" : ""
+          }`}
           type="text"
           onChange={(e) => setMood(e.target.value)}
           value={mood}
@@ -82,11 +95,11 @@ const MoodForm = () => {
           value={moodIntensity}
         />
         <p className="mb-3">{moodIntensity}</p>
-        <button className="mb-3 bg-teal-600 rounded p-2 text-white hover:bg-teal-700 transition ease-in">
+        <button className="mb-3 bg-teal-600 rounded py-2 px-4 text-white hover:bg-teal-700 transition ease-in">
           Submit Log
         </button>
         {isErrorVisible && (
-          <div className="bg-red-300 p-3 rounded-md border border-red-800 text-sm text-center">
+          <div className="bg-red-300 p-3 rounded-md border border-red-400 text-sm text-center">
             Please make sure to fill all required fields
           </div>
         )}

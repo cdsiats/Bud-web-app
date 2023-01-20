@@ -29,6 +29,26 @@ const getMood = async (req, res) => {
 const postMood = async (req, res) => {
   const { title, description, mood, moodIntensity } = req.body;
 
+  let emptyFields = [];
+
+  if (!title) {
+    emptyFields.push("title");
+  }
+  if (!description) {
+    emptyFields.push("description");
+  }
+  if (!mood) {
+    emptyFields.push("mood");
+  }
+  if (!moodIntensity) {
+    emptyFields.push("moodIntensity");
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in all the fields", emptyFields });
+  }
+
   try {
     const createMood = await Mood.create({
       title,

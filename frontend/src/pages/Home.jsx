@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useMoodsContext } from "../hooks/useMoodsContext";
 
 // components
 import MoodDetails from "../components/MoodDetails";
 import MoodForm from "../components/MoodForm";
 
 const Home = () => {
-  const [moods, setMoods] = useState(null);
+  const { moods, dispatch } = useMoodsContext();
 
   useEffect(() => {
     const fetchMoods = async () => {
@@ -13,13 +14,12 @@ const Home = () => {
       const json = await res.json();
 
       if (res.ok) {
-        setMoods(json);
-        console.log(json);
+        dispatch({ type: "SET_MOODS", payload: json });
       }
     };
 
     fetchMoods();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="bg-gray-300 h-screen">

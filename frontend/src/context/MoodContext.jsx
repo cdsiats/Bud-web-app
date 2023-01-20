@@ -12,18 +12,22 @@ export const MoodsReducer = (state, action) => {
       return {
         moods: [action.payload, ...state.moods],
       };
+    case "DELETE_MOOD":
+      return {
+        moods: state.moods.filter((m) => m._id !== action.payload._id),
+      };
     default:
       return state;
   }
 };
 
 export const MoodContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(moodsReducer, {
+  const [state, dispatch] = useReducer(MoodsReducer, {
     moods: null,
   });
 
   return (
-    <MoodContext.Provider value={{ state, dispatch }}>
+    <MoodContext.Provider value={{ ...state, dispatch }}>
       {children}
     </MoodContext.Provider>
   );

@@ -6,8 +6,8 @@ import { MoodContextProvider } from "./context/MoodContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <moodContextProvider>
+    <MoodContextProvider>
       <App />
-    </moodContextProvider>
+    </MoodContextProvider>
   </React.StrictMode>
 );
