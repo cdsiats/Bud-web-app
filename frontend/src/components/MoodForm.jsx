@@ -82,11 +82,11 @@ const MoodForm = () => {
           value={moodIntensity}
         />
         <p className="mb-3">{moodIntensity}</p>
-        <button className="mb-3 bg-teal-600 rounded p-2 text-white hover:bg-teal-700">
+        <button className="mb-3 bg-teal-600 rounded p-2 text-white hover:bg-teal-700 transition ease-in">
           Submit Log
         </button>
         {isErrorVisible && (
-          <div className="bg-red-300 p-3 rounded-md border border-red-800">
+          <div className="bg-red-300 p-3 rounded-md border border-red-800 text-sm text-center">
             Please make sure to fill all required fields
           </div>
         )}

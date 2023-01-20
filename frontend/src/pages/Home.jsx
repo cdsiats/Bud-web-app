@@ -23,12 +23,13 @@ const Home = () => {
 
   return (
     <div className="bg-gray-300 h-screen">
-      <div className="container mx-auto flex justify-between">
-        <div className="grow mr-10 h-[600px] overflow-scroll mt-5">
-          {moods &&
-            moods.map((mood) => (
-              <MoodDetails key={mood._id} mood={mood}></MoodDetails>
-            ))}
+      <div className="container mx-auto flex justify-between pt-10">
+        <div className="grow h-[600px] overflow-scroll mt-5 mr-60">
+          {moods
+            ? moods.map((mood) => (
+                <MoodDetails key={mood._id} mood={mood}></MoodDetails>
+              ))
+            : "You have no mood logs"}
         </div>
         <div className="pt-5">
           <MoodForm></MoodForm>
