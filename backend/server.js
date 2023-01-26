@@ -3,6 +3,7 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const port = process.env.PORT || 5000;
 const moodRoutes = require("./routes/moodRoutes");
+const userRoutes = require("./routes/userRoutes");
 const logger = require("./middleware/loggerMiddleware");
 const connectDB = require("./config/db");
 
@@ -19,6 +20,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/moods", moodRoutes);
+app.use("/api/user", userRoutes);
 
 // connect to database
 connectDB();
