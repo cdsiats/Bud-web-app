@@ -7,6 +7,10 @@ const {
   deleteMood,
   updateMood,
 } = require("../controllers/moodController");
+const requireAuth = require("../middleware/requireAuth");
+
+// auth middleware for all routes
+router.use(requireAuth);
 
 router.route("/").get(getMoods).post(postMood);
 router.route("/:id").put(updateMood).delete(deleteMood).get(getMood);
