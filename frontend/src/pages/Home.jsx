@@ -22,7 +22,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-300">
+    <div className="bg-gray-300 w-screen">
       <div className="container mx-auto flex justify-between pt-10">
         <div className="mt-5 mr-60 flex">
           {moods

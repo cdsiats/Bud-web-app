@@ -6,7 +6,7 @@ const MoodForm = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [mood, setMood] = useState("");
+  const [mood, setMood] = useState("Happy");
   const [moodIntensity, setMoodIntensity] = useState(1);
   const [error, setError] = useState("");
   const [emptyFields, setEmptyFields] = useState([]);
@@ -75,15 +75,25 @@ const MoodForm = () => {
         />
 
         <label>How did you feel?</label>
-        <input
-          placeholder="Happy? Anxious? Angry?"
-          className={`rounded h-8 mb-3 p-2 ${
-            emptyFields.includes("mood") ? "border border-red-400" : ""
-          }`}
-          type="radio"
+
+        <select
+          className="rounded h-8 mb-3 px-2"
+          onChange={(e) => setMood(e.target.value)}
+        >
+          <option value="Happy">Happy</option>
+          <option value="Sad">Sad</option>
+          <option value="Angry">Angry</option>
+          <option value="Bored">Bored</option>
+          <option value="Anxious">Anxious</option>
+          <option value="Stressed">Stressed</option>
+        </select>
+        {/* <input
+          placeholder="Happy, Sad, Angry,"
+          className={`rounded h-8 mb-3 p-2`}
+          type="select"
           onChange={(e) => setMood(e.target.value)}
           value={mood}
-        />
+        /> */}
 
         <label>How intense was the emotion? </label>
         <input
