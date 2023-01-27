@@ -19,7 +19,7 @@ const MoodDetails = ({ mood }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-lightshade p-3 rounded-lg shadow-md m-2 h-60 w-56">
+    <div className="flex flex-col justify-between bg-lightshade p-3 rounded-lg shadow-lg m-2 h-60 w-56 text-darkshade">
       <div className="flex justify-between">
         <h4 className="mb-3 text-lg text-main font-extrabold ">{mood.title}</h4>
         <span className="cursor-pointer material-icons " onClick={handleClick}>

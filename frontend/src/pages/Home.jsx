@@ -22,9 +22,9 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-300 w-screen">
+    <div className="bg-darkshade min-h-screen">
       <div className="container mx-auto flex justify-between pt-10">
-        <div className="mt-5 mr-60 flex">
+        <div className="mt-5 flex flex-wrap">
           {moods
             ? moods.map((mood) => (
                 <MoodDetails key={mood._id} mood={mood}></MoodDetails>

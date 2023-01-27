@@ -39,7 +39,7 @@ const MoodForm = () => {
     if (res.ok) {
       setTitle("");
       setDescription("");
-      setMood("");
+      setMood("Happy");
       setMoodIntensity(1);
       setError(null);
       setEmptyFields([]);
@@ -50,8 +50,11 @@ const MoodForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col flex-wrap">
-        <h3 className="font-bold text-xl text-teal-600 mb-3">Log a New Mood</h3>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col flex-wrap bg-lightshade p-5 rounded-lg text-darkshade shadow-lg"
+      >
+        <h3 className="font-bold text-xl text-main mb-3">Log a New Mood</h3>
         <label>Log Title</label>
         <input
           placeholder="Mood Log"
@@ -87,17 +90,10 @@ const MoodForm = () => {
           <option value="Anxious">Anxious</option>
           <option value="Stressed">Stressed</option>
         </select>
-        {/* <input
-          placeholder="Happy, Sad, Angry,"
-          className={`rounded h-8 mb-3 p-2`}
-          type="select"
-          onChange={(e) => setMood(e.target.value)}
-          value={mood}
-        /> */}
 
         <label>How intense was the emotion? </label>
         <input
-          className="accent-teal-600"
+          className="accent-main"
           type="range"
           min="1"
           max="5"
@@ -105,7 +101,7 @@ const MoodForm = () => {
           value={moodIntensity}
         />
         <p className="mb-3">{moodIntensity}</p>
-        <button className="mb-3 bg-teal-600 rounded py-2 px-4 text-white hover:bg-teal-700 transition ease-in">
+        <button className="mb-3 bg-main rounded py-2 px-4 text-white hover:scale-110 transition ease-out duration-300">
           Submit Log
         </button>
         {isErrorVisible && (
