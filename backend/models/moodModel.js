@@ -12,10 +12,13 @@ const moodSchema = mongoose.Schema(
     },
     mood: {
       type: String,
+      enum: ["Happy", "Sad", "Angry", "Bored", "Anxious", "Stressed"],
       required: true,
     },
     moodIntensity: {
       type: Number,
+      min: 1,
+      max: 5,
       required: true,
     },
   },

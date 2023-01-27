@@ -63,7 +63,7 @@ const MoodForm = () => {
           value={title}
         />
 
-        <label>Description</label>
+        <label>Notes</label>
         <input
           placeholder="Tell me what happened"
           className={`rounded h-8 mb-3 p-2 border-teal-600 ${
@@ -80,7 +80,7 @@ const MoodForm = () => {
           className={`rounded h-8 mb-3 p-2 ${
             emptyFields.includes("mood") ? "border border-red-400" : ""
           }`}
-          type="text"
+          type="radio"
           onChange={(e) => setMood(e.target.value)}
           value={mood}
         />

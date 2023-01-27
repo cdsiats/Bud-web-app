@@ -1,19 +1,26 @@
 import { useState } from "react";
 
-const Login = () => {
-  const [username, setUsername] = useState("");
+const Signup = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(password, username);
+    console.log(email, password, username);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Login</h3>
+      <h3>Sign Up</h3>
 
+      <label htmlFor="">Email:</label>
+      <input
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
       <label htmlFor="">Username:</label>
       <input
         type="text"
@@ -26,9 +33,9 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <button type="submit">Login</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
 
-export default Login;
+export default Signup;

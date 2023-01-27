@@ -19,12 +19,10 @@ const MoodDetails = ({ mood }) => {
   };
 
   return (
-    <div className="bg-white mb-3 p-3 rounded-lg shadow-md max-w-none">
-      <h4 className="mb-3 text-lg text-teal-600 font-extrabold">
-        {mood.title}
-      </h4>
+    <div className="bg-lightshade mb-3 p-3 rounded-lg shadow-md m-2 h-fit">
+      <h4 className="mb-3 text-lg text-main font-extrabold">{mood.title}</h4>
       <p>
-        <strong>Description : </strong>
+        <strong>Notes : </strong>
         {mood.description}
       </p>
       <p>

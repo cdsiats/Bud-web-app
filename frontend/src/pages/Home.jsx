@@ -22,9 +22,9 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gray-300 h-screen">
+    <div className="bg-gray-300">
       <div className="container mx-auto flex justify-between pt-10">
-        <div className="grow h-[600px] overflow-scroll mt-5 mr-60">
+        <div className="mt-5 mr-60 flex">
           {moods
             ? moods.map((mood) => (
                 <MoodDetails key={mood._id} mood={mood}></MoodDetails>

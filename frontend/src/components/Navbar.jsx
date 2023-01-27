@@ -11,6 +11,14 @@ const Navbar = () => {
               Bud
             </h1>
           </Link>
+          <nav>
+            <div>
+              <Link className="mr-5" to="/login">
+                Login
+              </Link>
+              <Link to="/signup">Signup</Link>
+            </div>
+          </nav>
         </div>
       </header>
     </>
