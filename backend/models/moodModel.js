@@ -22,8 +22,9 @@ const moodSchema = mongoose.Schema(
       required: true,
     },
     user_id: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "User",
     },
   },
   {
