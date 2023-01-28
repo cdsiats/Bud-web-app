@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 
 //@desc GET all moods
 const getMoods = async (req, res) => {
-  const moods = await Mood.find({}).sort({ createdAt: -1 });
+  const { id } = req.user;
+  const moods = await Mood.find({ id }).sort({ createdAt: -1 });
 
   res.status(200).json(moods);
 };
@@ -50,11 +51,13 @@ const postMood = async (req, res) => {
   }
 
   try {
+    const user_id = req.user._id;
     const createMood = await Mood.create({
       title,
       description,
       mood,
       moodIntensity,
+      user_id,
     });
 
     res.status(200).json(createMood);

@@ -21,6 +21,10 @@ const moodSchema = mongoose.Schema(
       max: 5,
       required: true,
     },
+    user_id: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useMoodsContext } from "../hooks/useMoodsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const MoodForm = () => {
   const { dispatch } = useMoodsContext();
+  const { user } = useAuthContext();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -15,6 +17,11 @@ const MoodForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError("You must be logged in to create a mood log");
+      return;
+    }
+
     const submittedMood = { title, description, mood, moodIntensity };
 
     const res = await fetch("http://localhost:8000/api/moods", {
@@ -22,6 +29,7 @@ const MoodForm = () => {
       body: JSON.stringify(submittedMood),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
 
